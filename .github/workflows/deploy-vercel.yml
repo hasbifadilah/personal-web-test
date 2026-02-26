@@ -16,16 +16,6 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
     steps:
-      - name: Debug Environment Variables
-        run: |
-          # Note: GitHub Actions automatically masks secrets with ***
-          echo "VERCEL_ORG_ID is: $VERCEL_ORG_ID"
-          echo "VERCEL_PROJECT_ID is: $VERCEL_PROJECT_ID"
-          # To verify token exists without exposing it, we can check its length
-          echo "VERCEL_TOKEN length is: ${#VERCEL_TOKEN}"
-          # If you temporarily need to bypass masking to verify values, you can use:
-          # echo "Unmasked ORG_ID: $(echo $VERCEL_ORG_ID | sed 's/./& /g')"
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -40,9 +30,6 @@ jobs:
 
       - name: Run tests
         run: npm run test
-
-      - name: Build project
-        run: npm run build
 
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
