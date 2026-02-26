@@ -31,6 +31,12 @@ jobs:
       - name: Run tests
         run: npm run test
 
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
