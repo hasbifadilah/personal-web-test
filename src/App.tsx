@@ -1,55 +1,57 @@
-import React, { useCallback, useState } from 'react'
-import { Navbar } from './components/Navbar'
-import { ProjectCard } from './components/ProjectCard'
-import { Section } from './components/Section'
-import { SkillTag } from './components/SkillTag'
+import React, { useCallback, useState } from "react";
+import { Navbar } from "./components/Navbar";
+import { ProjectCard } from "./components/ProjectCard";
+import { Section } from "./components/Section";
+import { SkillTag } from "./components/SkillTag";
 
-type SectionId = 'about' | 'skills' | 'projects' | 'contact'
+type SectionId = "about" | "skills" | "projects" | "contact";
 
 const NAV_ITEMS: { id: SectionId; label: string }[] = [
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'contact', label: 'Contact' },
-]
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 const skills = {
-  languages: ['JavaScript', 'TypeScript'],
-  frameworks: ['React', 'Vite', 'Tailwind CSS'],
-  tools: ['Git', 'GitHub', 'VS Code'],
-}
+  languages: ["JavaScript", "TypeScript"],
+  frameworks: ["React", "Vite", "Tailwind CSS"],
+  tools: ["Git", "GitHub", "VS Code"],
+};
 
 const projects = [
   {
-    title: 'Portfolio Website',
-    description: 'A responsive personal site built with Vite, React, and Tailwind CSS.',
-    stack: ['React', 'TypeScript', 'Tailwind CSS'],
+    title: "Portfolio Website",
+    description:
+      "A responsive personal site built with Vite, React, and Tailwind CSS.",
+    stack: ["React", "TypeScript", "Tailwind CSS"],
     links: {
-      demo: '#',
-      repo: '#',
+      demo: "#",
+      repo: "#",
     },
   },
   {
-    title: 'Simple Dashboard',
-    description: 'Minimal dashboard UI with reusable components and light theme.',
-    stack: ['React', 'Vite'],
+    title: "Simple Dashboard",
+    description:
+      "Minimal dashboard UI with reusable components and light theme.",
+    stack: ["React", "Vite"],
     links: {
-      demo: '#',
-      repo: '#',
+      demo: "#",
+      repo: "#",
     },
   },
-]
+];
 
 function App() {
-  const [activeSection, setActiveSection] = useState<SectionId>('about')
+  const [activeSection, setActiveSection] = useState<SectionId>("about");
 
   const handleScrollTo = useCallback((id: SectionId) => {
-    const el = document.getElementById(id)
+    const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      setActiveSection(id)
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveSection(id);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
@@ -64,7 +66,7 @@ function App() {
           <div className="flex flex-col gap-6 md:flex-row md:items-center">
             <div className="flex-1">
               <h1 className="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-                Hi, I&apos;m Your Name.
+                Hi, I&apos;m David Buchanan.
               </h1>
               <p className="mt-4 text-base leading-relaxed text-slate-600 md:text-lg">
                 A short introduction about who you are, what you do, and what
@@ -74,14 +76,14 @@ function App() {
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => handleScrollTo('projects')}
+                  onClick={() => handleScrollTo("projects")}
                   className="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-slate-50 shadow-sm transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                 >
                   View Projects
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleScrollTo('contact')}
+                  onClick={() => handleScrollTo("contact")}
                   className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
                 >
                   Contact Me
@@ -134,7 +136,7 @@ function App() {
         <Section
           id="projects"
           title="Projects"
-          description="A few things I&apos;ve worked on recently."
+          description="A few things I've worked on recently."
         >
           <div className="grid gap-6 md:grid-cols-2">
             {projects.map((project) => (
@@ -146,36 +148,36 @@ function App() {
         <Section
           id="contact"
           title="Contact"
-          description="Feel free to reach out if you&apos;d like to collaborate or just say hello."
+          description="Feel free to reach out if you'd like to collaborate or just say hello."
           background="muted"
         >
           <div className="grid gap-10 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
             <div className="space-y-3 text-sm text-slate-700">
               <p>
-                <span className="font-medium">Email:</span>{' '}
+                <span className="font-medium">Email:</span>{" "}
                 <a
-                  href="mailto:you@example.com"
+                  href="mailto:david.buchanan@email.com"
                   className="text-slate-900 underline underline-offset-2"
                 >
-                  you@example.com
+                  david.buchanan@email.com
                 </a>
               </p>
               <p>
-                <span className="font-medium">LinkedIn:</span>{' '}
+                <span className="font-medium">LinkedIn:</span>{" "}
                 <a
-                  href="#"
+                  href="https://linkedin.com/in/david-buchanan"
                   className="text-slate-900 underline underline-offset-2"
                 >
-                  linkedin.com/in/your-profile
+                  linkedin.com/in/david-buchanan
                 </a>
               </p>
               <p>
-                <span className="font-medium">GitHub:</span>{' '}
+                <span className="font-medium">GitHub:</span>{" "}
                 <a
-                  href="#"
+                  href="https://github.com/david-buchanan"
                   className="text-slate-900 underline underline-offset-2"
                 >
-                  github.com/your-username
+                  github.com/david-buchanan
                 </a>
               </p>
             </div>
@@ -191,40 +193,40 @@ function App() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
 type ContactFormState = {
-  name: string
-  email: string
-  message: string
-}
+  name: string;
+  email: string;
+  message: string;
+};
 
 function ContactForm() {
   const [form, setForm] = useState<ContactFormState>({
-    name: '',
-    email: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = event.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = event.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      return
+      return;
     }
     // For now we just log the message. Replace with a real backend later.
     // eslint-disable-next-line no-console
-    console.log('Contact form submitted:', form)
-    setSubmitted(true)
-  }
+    console.log("Contact form submitted:", form);
+    setSubmitted(true);
+  };
 
   return (
     <form
@@ -295,7 +297,7 @@ function ContactForm() {
         </p>
       )}
     </form>
-  )
+  );
 }
 
-export default App
+export default App;
